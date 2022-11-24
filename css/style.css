@@ -1,0 +1,136 @@
+:root {
+    --color-primary:#DADBD3;
+    --color-primary-dark: #EAEAEA;
+    --color-secondary:#D5F9BA;
+}
+
+html{
+    font-size: 14px;
+}
+
+/* divisione principale */
+.container{
+    --bs-gutter-x: 0;
+}
+
+.total-container{
+    background-color: var(--color-primary);
+    position: relative;
+    height: 100vh;
+    overflow: auto;
+}
+
+.green-bar {
+    background-color: #009688;
+    height: 20%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.main-content {
+    height: 90vh;
+    position: relative;
+    top:5vh;
+    z-index: 10;
+    margin-bottom: -3rem;
+}
+
+/* divisione main-content */
+.sidebar {
+    width: 400px;
+    background-color: white;
+}
+
+.message-container{
+    flex-grow: 1;
+    background-image: url("../img/mine.jpg");
+}
+
+/* codice riutilizzato */
+.img-container{
+    max-width: 3rem;
+    overflow: hidden;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.box{
+    padding: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-primary-dark);
+}
+
+.text{
+    font-size: .7rem;
+    color: #BCBEBE;
+}
+
+.form-control,
+.input-group-text{
+    border: none;
+    box-shadow: 0px 0px 5px -1px var(--color-primary);
+}
+
+/* divisione sidebar */
+.icon-box i {
+    padding: 0 .4rem;
+    color: #B1B1B1;
+}
+
+.blue-bar {
+    background-color: #8EDAFC;
+    padding: .7rem .7rem;
+}
+
+.circle{
+    background-color: white;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    padding: .5rem;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle i{
+    color: #8EDAFC;
+}
+
+.chat-list-box{
+    overflow: auto;
+}
+
+.chat-list-box > div{
+    display: flex;
+    padding: .5rem 1rem;
+    border-bottom: 1px solid var(--color-primary-dark);
+}
+
+.chat-list-box .active{
+    background-color: #E9EBEB;
+}
+
+/* divisione message-container */
+.message-screen{
+    padding: 2rem;
+}
+
+.message-send {
+    display: inline-block;
+    border-radius: 10px;
+    background-color: var(--color-secondary);
+    padding: .5rem .5rem 0;
+}
+
+.message-recived {
+    display: inline-block;
+    border-radius: 10px;
+    background-color: white;
+    padding: .5rem .5rem 0;
+}

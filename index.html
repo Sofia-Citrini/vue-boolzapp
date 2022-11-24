@@ -16,7 +16,109 @@
 </head>
 
 <body>
-    <div id="app"></div>
+    <div id="app">
+        <div class="total-container">
+             <!-- barra verde -->
+             <div class="green-bar"></div>
+
+            <!-- contenuto principale -->
+            <div class="container main-content d-flex">
+
+                <div class="sidebar d-flex flex-column">
+                    <!-- profilo utente -->
+                    <div class="box border-end">
+                        <div class="img-container">
+                            <img src="img/avatar_io.jpg" alt="foto profilo" class="img-fluid">
+                        </div>
+                        <div class="flex-fill px-1">Sofia</div>
+                        <div class="icon-box">
+                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+
+                    <!-- barra azzurra -->
+                    <div class="d-flex align-items-center blue-bar">
+                        <div class="circle">
+                            <i class="fa-solid fa-bell-slash"></i>
+                        </div>
+                        <div class="text text-black ps-1">
+                            <div>Ricevi notifiche di nuovi messaggi</div>
+                            <div class="text-decoration-underline text-secondary">Attiva notifiche desktop</div>
+                        </div>
+                    </div>
+
+                    <!-- input cerca -->
+                    <div class="input-group input-group-sm p-2">
+                        <span class="input-group-text" id="inputGroup-sizing-sm"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <!-- chat  -->
+                    <div class="chat-list-box">
+                        <div v-for="(user, i) in userList">
+                            <div class="img-container">
+                                <img :src="user.avatar" alt="foto profilo" class="img-fluid">
+                            </div>
+                            <div class="ps-3 flex-fill">
+                                <div>{{user.name}}</div>
+                                <div class="text">Ultimo messaggio inviato</div>
+                            </div>
+                            <div class="text">12.00</div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="message-container d-flex flex-column">
+                    <!-- profile -->
+                    <div class="box">
+                        <div class="img-container">
+                            <img src="img/avatar_1.jpg" alt="foto profilo" class="img-fluid">
+                        </div>
+                        <div class="flex-fill px-1">
+                            <div>Michele</div>
+                            <div class="text text-secondary">Ultimo accesso oggi alle 12.00</div>
+                        </div>
+                        <div class="icon-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-paperclip"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+
+                    <!-- message -->
+                    <div class="flex-grow-1 message-screen">
+                        <div class="d-flex justify-content-end">
+                            <div class="message-send">
+                                <div class="pe-5">Hai portato a spasso il cane?</div>
+                                <div class="text text-end">15:30</div>
+                            </div>
+                        </div>
+                        
+                       <div>
+                            <div class="message-recived">
+                                <div class="pe-5">Tutto Fatto!</div> 
+                                <div class="text text-end">16:30</div>
+                            </div>
+                       </div>
+                        
+                    </div>
+
+                    <!-- input scritta -->
+                    <div class="box">
+                        <div><i class="fa-regular fa-face-smile ps-4"></i></div>
+                        <div class="flex-fill px-4">
+                            <input type="text" class="form-control" placeholder="Scrivi un messaggio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div><i class="fa-solid fa-microphone pe-4"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
 
     <script src="js/main.js"></script>
 </body>
