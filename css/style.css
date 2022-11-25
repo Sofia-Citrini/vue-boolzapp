@@ -2,6 +2,7 @@
     --color-primary:#DADBD3;
     --color-primary-dark: #EAEAEA;
     --color-secondary:#D5F9BA;
+    --color-bg:linear-gradient(180deg, rgba(0,150,136,1) 5%, rgba(38,162,149,1) 28%, rgba(219,219,210,1) 28%, rgba(210,219,218,1) 100%);
 }
 
 html{
@@ -9,24 +10,11 @@ html{
 }
 
 /* divisione principale */
-.container{
-    --bs-gutter-x: 0;
-}
-
 .total-container{
-    background-color: var(--color-primary);
+    background: var(--color-bg);
     position: relative;
     height: 100vh;
     overflow: auto;
-}
-
-.green-bar {
-    background-color: #009688;
-    height: 20%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
 }
 
 .main-content {
@@ -34,13 +22,13 @@ html{
     position: relative;
     top:5vh;
     z-index: 10;
-    margin-bottom: -3rem;
 }
 
 /* divisione main-content */
 .sidebar {
     width: 400px;
     background-color: white;
+    flex-shrink: 0;
 }
 
 .message-container{
@@ -50,11 +38,14 @@ html{
 
 /* codice riutilizzato */
 .img-container{
-    max-width: 3rem;
+    width: 3rem;
     overflow: hidden;
     border-radius: 50%;
     aspect-ratio: 1/1;
-    object-fit: cover;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .box{
@@ -87,22 +78,12 @@ html{
     padding: .7rem .7rem;
 }
 
-.circle{
-    background-color: white;
-    border-radius: 50%;
-    aspect-ratio: 1/1;
-    padding: .5rem;
-    line-height: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.circle i{
+.blue-bar i{
     color: #8EDAFC;
 }
 
 .chat-list-box{
+    flex-grow: 1;
     overflow: auto;
 }
 
@@ -119,18 +100,24 @@ html{
 /* divisione message-container */
 .message-screen{
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    align-items: flex-start;
+}
+
+.message{
+    max-width: 50%;
+    min-width: 20%;
+    border-radius: 10px;
+    padding: .5rem .5rem .1rems;
 }
 
 .message-send {
-    display: inline-block;
-    border-radius: 10px;
+    align-self: flex-end;
     background-color: var(--color-secondary);
-    padding: .5rem .5rem 0;
 }
 
 .message-recived {
-    display: inline-block;
-    border-radius: 10px;
     background-color: white;
-    padding: .5rem .5rem 0;
 }

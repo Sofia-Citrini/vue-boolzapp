@@ -18,11 +18,7 @@
 <body>
     <div id="app">
         <div class="total-container">
-             <!-- barra verde -->
-             <div class="green-bar"></div>
-
-            <!-- contenuto principale -->
-            <div class="container main-content d-flex">
+            <div class="container px-0 main-content d-flex">
 
                 <div class="sidebar d-flex flex-column">
                     <!-- profilo utente -->
@@ -32,15 +28,15 @@
                         </div>
                         <div class="flex-fill px-1">Sofia</div>
                         <div class="icon-box">
-                            <i class="fa-solid fa-circle-notch"></i>
-                            <i class="fa-solid fa-message"></i>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                            <a href="#"><i class="fa-solid fa-circle-notch"></i></a>
+                            <a href="#"><i class="fa-solid fa-message"></i></a>
+                            <a href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                         </div>
                     </div>
 
                     <!-- barra azzurra -->
                     <div class="d-flex align-items-center blue-bar">
-                        <div class="circle">
+                        <div class="img-container">
                             <i class="fa-solid fa-bell-slash"></i>
                         </div>
                         <div class="text text-black ps-1">
@@ -57,7 +53,7 @@
 
                     <!-- chat  -->
                     <div class="chat-list-box">
-                        <div v-for="(user, i) in userList">
+                        <div v-for="(user, i) in userList" :key="i + user.name">
                             <div class="img-container">
                                 <img :src="user.avatar" alt="foto profilo" class="img-fluid">
                             </div>
@@ -82,27 +78,23 @@
                             <div class="text text-secondary">Ultimo accesso oggi alle 12.00</div>
                         </div>
                         <div class="icon-box">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <i class="fa-solid fa-paperclip"></i>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                            <a href="#"><i class="fa-solid fa-paperclip"></i></a>
+                            <a href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                         </div>
                     </div>
 
                     <!-- message -->
                     <div class="flex-grow-1 message-screen">
-                        <div class="d-flex justify-content-end">
-                            <div class="message-send">
-                                <div class="pe-5">Hai portato a spasso il cane?</div>
-                                <div class="text text-end">15:30</div>
-                            </div>
+                        <div class="message message-send" v-for="">
+                            <div class="pe-5">Hai portato a spasso il cane?</div>
+                            <div class="text text-end">15:30</div>
                         </div>
                         
-                       <div>
-                            <div class="message-recived">
-                                <div class="pe-5">Tutto Fatto!</div> 
-                                <div class="text text-end">16:30</div>
-                            </div>
-                       </div>
+                        <div class="message message-recived">
+                            <div class="pe-5">Tutto Fatto!</div> 
+                            <div class="text text-end">16:30</div>
+                        </div>
                         
                     </div>
 
