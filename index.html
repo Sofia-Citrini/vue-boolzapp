@@ -77,10 +77,10 @@
                     <!-- profile -->
                     <div class="box">
                         <div class="img-container">
-                            <img src="img/avatar_1.jpg" alt="foto profilo" class="img-fluid">
+                            <img :src="activeContac.avatar" alt="foto profilo" class="img-fluid">
                         </div>
                         <div class="flex-fill px-1">
-                            <div>Michele</div>
+                            <div>{{activeContac.name}}</div>
                             <div class="text text-secondary">Ultimo accesso oggi alle 12.00</div>
                         </div>
                         <div class="icon-box">
@@ -100,12 +100,13 @@
                         </div>
                     </div>
 
-                    <!-- input scritta -->
-                    <div class="box">
+                    <!-- input nuovo messaggio -->
+                    <div class="box flex-shrink-0">
                         <div><i class="fa-regular fa-face-smile ps-4"></i></div>
                         <div class="flex-fill px-4">
                             <input type="text" class="form-control" placeholder="Scrivi un messaggio"
-                                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
+                                v-model="newMessageSent.message" @keyup.enter="sentNewMessage">
                         </div>
                         <div><i class="fa-solid fa-microphone pe-4"></i></div>
                     </div>

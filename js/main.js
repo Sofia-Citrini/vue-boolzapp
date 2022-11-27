@@ -84,9 +84,21 @@ createApp({
 			  },
 			],
 			activeContac: null,
+			newMessageSent: {
+				message: '',
+				status:''
+			}
 		}
 	},
 	methods: {
+		sentNewMessage () {
+			this.activeContac.messages.push({
+				message: this.newMessageSent.message,
+				status: 'sent'
+			})
+
+			this.newMessageSent.message = ''
+		}
 	},
 	beforeMount () {
 		this.activeContac = this.userList[0]

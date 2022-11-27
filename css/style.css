@@ -100,6 +100,7 @@ html{
 /* divisione message-container */
 .message-screen{
     padding: 2rem;
+    overflow: auto;
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
