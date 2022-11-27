@@ -68,7 +68,7 @@ createApp({
 			  },
 			  {
 				name: 'Luisa',
-				avatar: 'img/avatar_4.jpg',
+				avatar: 'img/avatar_6.jpg',
 				visible: true,
 				messages: [{
 				  date: '10/01/2020 15:30:55',
@@ -82,9 +82,13 @@ createApp({
 				}
 				],
 			  },
-			]
+			],
+			activeContac: null,
 		}
 	},
 	methods: {
+	},
+	beforeMount () {
+		this.activeContac = this.userList[0]
 	}
 }).mount ('#app')

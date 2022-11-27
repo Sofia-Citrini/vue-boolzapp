@@ -26,7 +26,7 @@ html{
 
 /* divisione main-content */
 .sidebar {
-    width: 400px;
+    width: 300px;
     background-color: white;
     flex-shrink: 0;
 }
@@ -93,7 +93,7 @@ html{
     border-bottom: 1px solid var(--color-primary-dark);
 }
 
-.chat-list-box .active{
+.active{
     background-color: #E9EBEB;
 }
 
@@ -110,7 +110,7 @@ html{
     max-width: 50%;
     min-width: 20%;
     border-radius: 10px;
-    padding: .5rem .5rem .1rems;
+    padding: .5rem .5rem .1rem;
 }
 
 .message-send {
