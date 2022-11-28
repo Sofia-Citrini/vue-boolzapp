@@ -92,13 +92,30 @@ createApp({
 	},
 	methods: {
 		sentNewMessage () {
-			this.activeContac.messages.push({
-				message: this.newMessageSent.message,
-				status: 'sent'
-			})
-
-			this.newMessageSent.message = ''
+			if (this.newMessageSent.message === '') {
+				return
+			} else {
+				this.activeContac.messages.push({
+					// date:luxon.DateTime.now() -> tramite luxon
+					date: '10/01/2020 16:15:22',
+					message: this.newMessageSent.message,
+					status: 'sent'
+				});
+	
+				this.newMessageSent.message = '';
+			}
+			
+			setTimeout ( () => {
+				this.activeContac.messages.push({
+					// date:luxon.DateTime.now() -> tramite luxon
+					date: '10/01/2020 16:15:22',
+					message: 'okay',
+					status: 'received'
+				});
+			}, 1000)
 		}
+
+		// guardo il filtro esercizio lista
 	},
 	beforeMount () {
 		this.activeContac = this.userList[0]
