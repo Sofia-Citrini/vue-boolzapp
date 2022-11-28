@@ -83,37 +83,40 @@ createApp({
 				],
 			  },
 			],
-			activeContac: null,
+			activeContact: null,
 			newMessageSent: {
 				message: '',
 				status:''
 			},
 			searchChat:'', 
+			cancelMessage: false,
+			info: false
 		}
 	},
 	methods: {
 		sentNewMessage () {
 			if (this.newMessageSent.message === '') {
 				return
-			} else {
-				this.activeContac.messages.push({
-					date: luxon.DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss'),
-					message: this.newMessageSent.message,
-					status: 'sent'
-				});
-	
-				this.newMessageSent.message = '';
 			}
 			
+			this.activeContact.messages.push({
+				date: luxon.DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss'),
+				message: this.newMessageSent.message,
+				status: 'sent'
+			});
+
+			this.newMessageSent.message = '';
+			
+			
 			setTimeout ( () => {
-				this.activeContac.messages.push({
+				this.activeContact.messages.push({
 					date: luxon.DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss'),
 					message: 'okay',
 					status: 'received'
 				});
 			}, 1000)
 		},
-
+		
 		searchChatFilter(){
 			if (this.searchChat === ""){
 				return this.userList
@@ -123,9 +126,14 @@ createApp({
 				})
 			}
 
-		}
+		},
+
+		deleteMessage(index){
+			this.activeContact.messages.splice(index, 1)
+			
+		},
 	},
 	beforeMount () {
-		this.activeContac = this.userList[0]
+		this.activeContact = this.userList[0]
 	}
 }).mount ('#app')

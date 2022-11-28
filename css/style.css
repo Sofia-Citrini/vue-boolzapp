@@ -112,6 +112,7 @@ html{
     min-width: 20%;
     border-radius: 10px;
     padding: .5rem .5rem .1rem;
+    position: relative;
 }
 
 .message-send {
@@ -121,4 +122,14 @@ html{
 
 .message-recived {
     background-color: white;
+}
+
+.dropdown {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.btn-dropdown:focus{
+    border: transparent;
 }

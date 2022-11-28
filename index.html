@@ -10,6 +10,7 @@
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.1.0/build/global/luxon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
@@ -60,18 +61,18 @@
 
                     <!-- chat  -->
                     <div class="chat-list-box"> 
-                        <div @click="activeContac = user" 
+                        <div @click="activeContact = user" 
                                 v-for="(user, i) in searchChatFilter()" :key="i + user.name"
-                                :class="(activeContac === user) ? 'active' : ''">
+                                :class="(activeContact === user) ? 'active' : ''">
                             <div class="img-container">
                                 <img :src="user.avatar" alt="foto profilo" class="img-fluid">
                             </div>
                             <div class="ps-3 flex-fill">
                                 <div>{{user.name}}</div>
                                 <!-- inserire anteprima ultimo messaggio inviato -->
-                                <div class="text">ultimo messaggio inviato</div>
+                                <div class="text">{{user.messages[user.messages.length - 1].message}}</div>
                             </div>
-                            <div class="text">12.00</div>
+                            <div class="text">12</div>
                         </div>
                     </div>
 
@@ -81,10 +82,10 @@
                     <!-- profile -->
                     <div class="box">
                         <div class="img-container">
-                            <img :src="activeContac.avatar" alt="foto profilo" class="img-fluid">
+                            <img :src="activeContact.avatar" alt="foto profilo" class="img-fluid">
                         </div>
                         <div class="flex-fill px-1">
-                            <div>{{activeContac.name}}</div>
+                            <div>{{activeContact.name}}</div>
                             <div class="text text-secondary">Ultimo accesso oggi alle 12.00</div>
                         </div>
                         <div class="icon-box">
@@ -97,10 +98,21 @@
                     <!-- message -->
                     <div class="flex-grow-1 message-screen">
                         <div class="message"
-                            v-for="messageEl in activeContac.messages"
+                            v-for="(messageEl, i) in activeContact.messages"
                             :class = "(messageEl.status === 'sent') ? 'message-send' : 'message-recived'">
                             <div class="pe-5">{{messageEl.message}}</div>
-                            <div class="text text-end">15:30</div>
+                            <div class="text text-end">{{(messageEl.date.split(' ')[1]).substring(0, 5)}}</div>
+                            
+                            <!-- dropdown -->
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                  <li :value="info"><a class="dropdown-item" href="#">Message info</a></li>
+                                  <li :value="cancelMessage" @click="deleteMessage(i)"><a class="dropdown-item" href="#">Delete message</a></li>
+                                </ul>
+                              </div>
                         </div>
                     </div>
 
@@ -110,7 +122,7 @@
                         <div class="flex-fill px-4">
                             <input type="text" class="form-control" placeholder="Scrivi un messaggio"
                                 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
-                                v-model="newMessageSent.message" @keyup.enter="sentNewMessage">
+                                v-model="newMessageSent.message" @keyup.enter="sentNewMessage()">
                         </div>
                         <div><i class="fa-solid fa-microphone pe-4"></i></div>
                     </div>
