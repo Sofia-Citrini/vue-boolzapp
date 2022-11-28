@@ -9,6 +9,7 @@
     <title>Boolzapp</title>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.1.0/build/global/luxon.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
@@ -49,23 +50,26 @@
 
                     <!-- input cerca -->
                     <div class="input-group input-group-sm p-2">
-                        <span class="input-group-text" id="inputGroup-sizing-sm"><i
-                                class="fa-solid fa-magnifying-glass"></i></span>
+                        <span class="input-group-text" id="inputGroup-sizing-sm" @click="searchChatFilter()">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </span>
                         <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat"
-                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                            v-model="searchChat" @keyup.enter="searchChatFilter()">
                     </div>
 
                     <!-- chat  -->
                     <div class="chat-list-box"> 
                         <div @click="activeContac = user" 
-                                v-for="(user, i) in userList" :key="i + user.name"
+                                v-for="(user, i) in searchChatFilter()" :key="i + user.name"
                                 :class="(activeContac === user) ? 'active' : ''">
                             <div class="img-container">
                                 <img :src="user.avatar" alt="foto profilo" class="img-fluid">
                             </div>
                             <div class="ps-3 flex-fill">
                                 <div>{{user.name}}</div>
-                                <div class="text">Ultimo messaggio inviato</div>
+                                <!-- inserire anteprima ultimo messaggio inviato -->
+                                <div class="text">ultimo messaggio inviato</div>
                             </div>
                             <div class="text">12.00</div>
                         </div>

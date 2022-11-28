@@ -87,7 +87,8 @@ createApp({
 			newMessageSent: {
 				message: '',
 				status:''
-			}
+			},
+			searchChat:'', 
 		}
 	},
 	methods: {
@@ -96,8 +97,7 @@ createApp({
 				return
 			} else {
 				this.activeContac.messages.push({
-					// date:luxon.DateTime.now() -> tramite luxon
-					date: '10/01/2020 16:15:22',
+					date: luxon.DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss'),
 					message: this.newMessageSent.message,
 					status: 'sent'
 				});
@@ -107,15 +107,23 @@ createApp({
 			
 			setTimeout ( () => {
 				this.activeContac.messages.push({
-					// date:luxon.DateTime.now() -> tramite luxon
-					date: '10/01/2020 16:15:22',
+					date: luxon.DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss'),
 					message: 'okay',
 					status: 'received'
 				});
 			}, 1000)
-		}
+		},
 
-		// guardo il filtro esercizio lista
+		searchChatFilter(){
+			if (this.searchChat === ""){
+				return this.userList
+			} else {
+				return this.userList.filter((user) => {
+					return user.name.toLowerCase().includes(this.searchChat)
+				})
+			}
+
+		}
 	},
 	beforeMount () {
 		this.activeContac = this.userList[0]
