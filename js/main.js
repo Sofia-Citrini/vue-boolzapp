@@ -153,7 +153,7 @@ createApp({
 				message: '',
 				status:''
 			},
-			
+
 			searchChat:'', 
 		}
 	},
@@ -194,7 +194,6 @@ createApp({
 
 		deleteMessage(index){
 			this.activeContact.messages.splice(index, 1)
-			
 		},
 	},
 	beforeMount () {

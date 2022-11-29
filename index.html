@@ -69,10 +69,9 @@
                             </div>
                             <div class="ps-3 flex-fill">
                                 <div>{{user.name}}</div>
-                                <!-- inserire anteprima ultimo messaggio inviato -->
                                 <div class="text">{{user.messages[user.messages.length - 1].message}}</div>
                             </div>
-                            <div class="text">12</div>
+                            <div class="text">{{(user.messages[user.messages.length - 1].date.split(' ')[1]).substring(0, 5)}}</div>
                         </div>
                     </div>
 
@@ -86,7 +85,7 @@
                         </div>
                         <div class="flex-fill px-1">
                             <div>{{activeContact.name}}</div>
-                            <div class="text text-secondary">Ultimo accesso oggi alle 12</div>
+                            <div class="text text-secondary">Ultimo accesso oggi alle {{(activeContact.messages[activeContact.messages.length - 1].date.split(' ')[1]).substring(0, 5)}}</div>
                         </div>
                         <div class="icon-box">
                             <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
@@ -112,7 +111,9 @@
                                   <li><a class="dropdown-item" href="#">Message info</a></li>
                                   <li @click="deleteMessage(i)"><a class="dropdown-item" href="#">Delete message</a></li>
                                 </ul>
-                              </div>
+                            </div>
+
+                            <!-- info message -->
                         </div>
                     </div>
 
