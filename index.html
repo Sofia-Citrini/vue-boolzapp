@@ -65,7 +65,7 @@
                                 v-for="(user, i) in searchChatFilter()" :key="i + user.name"
                                 :class="(activeContact === user) ? 'active' : ''">
                             <div class="img-container">
-                                <img :src="user.avatar" alt="foto profilo" class="img-fluid">
+                                <img :src=`img/avatar${user.avatar}.jpg` alt="foto profilo" class="img-fluid">
                             </div>
                             <div class="ps-3 flex-fill">
                                 <div>{{user.name}}</div>
@@ -82,11 +82,11 @@
                     <!-- profile -->
                     <div class="box">
                         <div class="img-container">
-                            <img :src="activeContact.avatar" alt="foto profilo" class="img-fluid">
+                            <img :src=`img/avatar${activeContact.avatar}.jpg` alt="foto profilo" class="img-fluid">
                         </div>
                         <div class="flex-fill px-1">
                             <div>{{activeContact.name}}</div>
-                            <div class="text text-secondary">Ultimo accesso oggi alle 12.00</div>
+                            <div class="text text-secondary">Ultimo accesso oggi alle 12</div>
                         </div>
                         <div class="icon-box">
                             <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
@@ -109,8 +109,8 @@
                                     <i class="fa-solid fa-chevron-down"></i>
                                 </button>
                                 <ul class="dropdown-menu">
-                                  <li :value="info"><a class="dropdown-item" href="#">Message info</a></li>
-                                  <li :value="cancelMessage" @click="deleteMessage(i)"><a class="dropdown-item" href="#">Delete message</a></li>
+                                  <li><a class="dropdown-item" href="#">Message info</a></li>
+                                  <li @click="deleteMessage(i)"><a class="dropdown-item" href="#">Delete message</a></li>
                                 </ul>
                               </div>
                         </div>
